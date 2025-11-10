@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/badge/Version-2.1.1-blue.svg)](https://github.com/HeyheyEason/PyREPL/)
 [![Python](https://img.shields.io/badge/Python-3.13+-informational.svg)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.txt)
 
 A **lightweight, feature-enhanced Python REPL environment** implemented purely with native Python logic. **PyREPL** is designed to provide an **efficient and practical interactive programming experience**, particularly well-suited for **script management and rapid code testing.**
 
@@ -59,7 +59,7 @@ A powerful set of built-in file operation commands allows you to manage code scr
 
 ### Standalone Executable (Frozen Build)
 
-* The [GitHub dist folder](https://github.com/HeyheyEason/PyREPL/HeyheyEason-PyREPL/dist) provides currently supported, pre-compiled executables.
+* The [GitHub dist folder](https://github.com/HeyheyEason/PyREPL/tree/master/HeyheyEason%20PyREPL/dist) provides currently supported, pre-compiled executables.
 
 ---
 
@@ -80,4 +80,4 @@ The following table details the Python versions corresponding to the various sup
 
 For further usage instructions, please refer to the relevant documentation located in the project's `data/documents` folder.
 
-This project is released under the **MIT License**. Please consult the [LICENSE](LICENSE) file for full details.
+This project is released under the **MIT License**. Please consult the [LICENSE](LICENSE.txt) file for full details.
