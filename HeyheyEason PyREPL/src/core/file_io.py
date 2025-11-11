@@ -5,7 +5,7 @@ File Information
     - Project: HeyheyEason PyREPL
     - Module: core.file_io
     - Description: Script for file I/O operations in the REPL.
-    - Last Modified: 2025-11-09
+    - Last Modified: 2025-11-12
 ==============================================================
 """
 
@@ -19,7 +19,7 @@ class FileIO:
     """Class representing file input/output system for the REPL."""
     
     # Define base directory paths
-    PROJECT_DIR: Path = Path(sys.executable).resolve().parent.parent if getattr(sys, 'frozen', False) else Path(__file__).resolve().parent.parent.parent
+    PROJECT_DIR: Path = Path(sys.executable).resolve().parent.parent.parent if getattr(sys, 'frozen', False) else Path(__file__).resolve().parent.parent.parent
     HELP_DIR: Path = PROJECT_DIR / "data" / "documents" / "Help.txt"
     SCRIPTS_DIR: Path = PROJECT_DIR / "data" / "scripts"
 
@@ -145,4 +145,14 @@ class FileIO:
 
     def read(self) -> str:
         """Read the content of the script file."""
-        return self.script_file.readline().rstrip()
+        raw_line: str = self.script_file.readline()
+
+        # End of file
+        if not raw_line:
+            return ""
+
+        # Skip empty lines
+        if raw_line.strip() == "":
+            return self.read()
+        else:
+            return raw_line.rstrip()

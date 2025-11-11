@@ -7,8 +7,8 @@ File Information
     - Author: HeyheyEason
     - License: MIT License
     - Description: The main entry point for the PyREPL app.
-    - Version: 2.1.1
-    - Last Modified: 2025-11-09
+    - Version: 2.1.2
+    - Last Modified: 2025-11-12
 --------------------------------------------------------------------------------------------------
 Environment Information
     - Python Version: 3.13.8
@@ -16,6 +16,12 @@ Environment Information
     - Terminal: ANSI-compatible terminal recommended
 --------------------------------------------------------------------------------------------------
 Changelog
+    - 2.1.2:
+        1. Submitter: Eason Huang
+        2. Changes:
+            a. Fixed a bug that caused file reading stop when encountering empty lines.
+            b. Due to executable file moved to deeper directory, updated project directory logic.
+            c. Create a symbolic link executable for different versions of the executable file.
     - 2.1.1:
         1. Submitter: Eason Huang
         2. Changes:

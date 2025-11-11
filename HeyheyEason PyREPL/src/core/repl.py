@@ -5,7 +5,7 @@ File Information
     - Project: HeyheyEason PyREPL
     - Module: core.repl
     - Description: The implementation of the REPL.
-    - Last Modified: 2025-11-09
+    - Last Modified: 2025-11-12
 ==============================================================
 """
 
@@ -27,7 +27,7 @@ class Repl:
     ERROR_PROMPT: str = f"{Color.RED}!!! {Color.RESET}"
 
     # Define REPL version
-    VERSION: str = "2.1.1"
+    VERSION: str = "2.1.2"
 
     def __init__(self) -> None:
         """Class initializer for the REPL."""

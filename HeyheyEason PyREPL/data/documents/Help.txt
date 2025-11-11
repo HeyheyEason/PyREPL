@@ -1,5 +1,5 @@
 ================================================================================
-PyREPL User Manual (v2.1.1)
+PyREPL User Manual (v2.1.2)
     - Description: PyREPL is a Read-Eval-Print Loop app implemented with least 
                    Python dependencies. It supports multi-line input, 
                    error handling, and internal commands.
@@ -9,7 +9,7 @@ PyREPL User Manual (v2.1.1)
 Command Line Arguments
     - Usage:
         1. From source file: python main.py <args>
-        2. From executable: PyREPL.exe <args>
+        2. From executable: pyrepl.exe <args>
     - Arguments:
         --version (-v): Show the version information.
         --credits (-c): Show the credits information.

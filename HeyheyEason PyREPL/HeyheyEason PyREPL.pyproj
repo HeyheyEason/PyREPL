@@ -37,30 +37,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="build\" />
-    <Folder Include="build\PyREPL\" />
-    <Folder Include="build\PyREPL\localpycs\" />
     <Folder Include="data\" />
     <Folder Include="dist\" />
+    <Folder Include="dist\windows\" />
+    <Folder Include="backups\" />
     <Folder Include="src\" />
     <Folder Include="src\core\" />
     <Folder Include="src\utilities\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="build\PyREPL\Analysis-00.toc" />
-    <Content Include="build\PyREPL\base_library.zip" />
-    <Content Include="build\PyREPL\EXE-00.toc" />
-    <Content Include="build\PyREPL\localpycs\pyimod01_archive.pyc" />
-    <Content Include="build\PyREPL\localpycs\pyimod02_importers.pyc" />
-    <Content Include="build\PyREPL\localpycs\pyimod03_ctypes.pyc" />
-    <Content Include="build\PyREPL\localpycs\pyimod04_pywin32.pyc" />
-    <Content Include="build\PyREPL\localpycs\struct.pyc" />
-    <Content Include="build\PyREPL\PKG-00.toc" />
-    <Content Include="build\PyREPL\PyREPL.pkg" />
-    <Content Include="build\PyREPL\PYZ-00.pyz" />
-    <Content Include="build\PyREPL\PYZ-00.toc" />
-    <Content Include="build\PyREPL\warn-PyREPL.txt" />
-    <Content Include="build\PyREPL\xref-PyREPL.html" />
-    <Content Include="dist\PyREPL.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
