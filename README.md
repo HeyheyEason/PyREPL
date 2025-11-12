@@ -1,6 +1,6 @@
 # HeyheyEason PyREPL
 
-[![Version](https://img.shields.io/badge/Version-2.1.1-blue.svg)](https://github.com/HeyheyEason/PyREPL/)
+[![Version](https://img.shields.io/badge/Version-2.1.2-blue.svg)](https://github.com/HeyheyEason/PyREPL/)
 [![Python](https://img.shields.io/badge/Python-3.13+-informational.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.txt)
 
@@ -14,7 +14,7 @@ PyREPL's design philosophy is to **replicate standard REPL behavior using pure l
 
 ### 1. Core REPL Mechanism (Pure Logic Implementation)
 
-* **Zero External Dependencies:** It does not rely on the ‵code` or `readline` modules from the Python standard library; all core REPL behaviors are implemented using custom logic.
+* **Zero External Dependencies:** It does not rely on the `code` or `readline` modules from the Python standard library; all core REPL behaviors are implemented using custom logic.
 
 * **Multi-line Code Block Handling:** Ingeniously utilizes the `try...except IndentationError` capture mechanism to accurately determine if multi-line input (such as `if` or `def` statements) has concluded, perfectly simulating the behavior of the native Python REPL.
 
@@ -72,7 +72,7 @@ The following table details the Python versions corresponding to the various sup
 | 1.4.3                     | 3.13.0                       |
 | 1.5.2                     | 3.13.2                       |
 | 2.0.4                     | 3.13.8                       |
-| 2.1.1                     | 3.13.8                       |
+| 2.1.2                     | 3.13.8                       |
 
 ---
 
