@@ -1,6 +1,6 @@
 # HeyheyEason PyREPL
 
-[![Version](https://img.shields.io/badge/Version-2.1.2-blue.svg)](https://github.com/HeyheyEason/PyREPL/)
+[![Version](https://img.shields.io/badge/Version-2.1.3-blue.svg)](https://github.com/HeyheyEason/PyREPL/)
 [![Python](https://img.shields.io/badge/Python-3.13+-informational.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.txt)
 
