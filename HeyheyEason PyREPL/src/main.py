@@ -7,8 +7,8 @@ File Information
     - Author: HeyheyEason
     - License: MIT License
     - Description: The main entry point for the PyREPL app.
-    - Version: 2.1.2
-    - Last Modified: 2025-11-12
+    - Version: 2.1.3
+    - Last Modified: 2025-11-13
 --------------------------------------------------------------------------------------------------
 Environment Information
     - Python Version: 3.13.8
@@ -16,6 +16,10 @@ Environment Information
     - Terminal: ANSI-compatible terminal recommended
 --------------------------------------------------------------------------------------------------
 Changelog
+    - 2.1.3:
+        1. Submitter: Eason Huang
+        2. Changes:
+            a. 'reset' command will close any opened script file now.
     - 2.1.2:
         1. Submitter: Eason Huang
         2. Changes:

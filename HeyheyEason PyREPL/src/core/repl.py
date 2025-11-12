@@ -5,7 +5,7 @@ File Information
     - Project: HeyheyEason PyREPL
     - Module: core.repl
     - Description: The implementation of the REPL.
-    - Last Modified: 2025-11-12
+    - Last Modified: 2025-11-13
 ==============================================================
 """
 
@@ -27,7 +27,7 @@ class Repl:
     ERROR_PROMPT: str = f"{Color.RED}!!! {Color.RESET}"
 
     # Define REPL version
-    VERSION: str = "2.1.2"
+    VERSION: str = "2.1.3"
 
     def __init__(self) -> None:
         """Class initializer for the REPL."""
@@ -78,10 +78,11 @@ class Repl:
         print(self.repl_dict)
 
     def resetEnvironment(self) -> None:
-        """Reset the REPL environment except modules."""
+        """Reset the REPL environment and the file status except modules."""
         Repl.clearScreen()
         self.init()
         Repl.printBanner()
+        self.file_io.closeFile()
         print(f"{Color.CYAN}Note: PyREPL cannot really cancel importing modules.{Color.RESET}")
 
     def processInternalCommand(self, line: str) -> bool:

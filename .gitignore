@@ -3,6 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# PyInstaller, build, and temporary files
+HeyheyEason\ PyREPL/build/
+HeyheyEason\ PyREPL/*.spec
+HeyheyEason\ PyREPL/backups/
+
 # User-specific files
 *.rsuser
 *.suo
