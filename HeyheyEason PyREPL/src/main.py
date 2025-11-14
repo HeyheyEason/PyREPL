@@ -7,8 +7,8 @@ File Information
     - Author: HeyheyEason
     - License: MIT License
     - Description: The main entry point for the PyREPL app.
-    - Version: 2.1.3
-    - Last Modified: 2025-11-13
+    - Version: 2.2.0
+    - Last Modified: 2025-11-15
 --------------------------------------------------------------------------------------------------
 Environment Information
     - Python Version: 3.13.8
@@ -16,25 +16,12 @@ Environment Information
     - Terminal: ANSI-compatible terminal recommended
 --------------------------------------------------------------------------------------------------
 Changelog
-    - 2.1.3:
+    - 2.2.0:
         1. Submitter: Eason Huang
         2. Changes:
-            a. 'reset' command will close any opened script file now.
-    - 2.1.2:
-        1. Submitter: Eason Huang
-        2. Changes:
-            a. Fixed a bug that caused file reading stop when encountering empty lines.
-            b. Due to executable file moved to deeper directory, updated project directory logic.
-            c. Create a symbolic link executable for different versions of the executable file.
-    - 2.1.1:
-        1. Submitter: Eason Huang
-        2. Changes:
-            a. Refactored codebase for improved modularity and maintainability.
-    - 2.1.0:
-        1. Submitter: Eason Huang
-        2. Changes:
-            a. 'help()' function has been removed due to the executable file limitation.
-            b. 'help' command can now be used to search Python documentation online.
+            a. The REPL now supports multi-line bracketed code blocks.
+            b. Explict raise of IndentationError won't cause accidental indentation increament.
+            c. SyntaxError now skips the situation when the user inputs incomplete bracketed code.
 ==================================================================================================
 """
 

@@ -5,7 +5,7 @@ File Information
     - Project: HeyheyEason PyREPL
     - Module: core.repl
     - Description: The implementation of the REPL.
-    - Last Modified: 2025-11-13
+    - Last Modified: 2025-11-15
 ==============================================================
 """
 
@@ -27,7 +27,7 @@ class Repl:
     ERROR_PROMPT: str = f"{Color.RED}!!! {Color.RESET}"
 
     # Define REPL version
-    VERSION: str = "2.1.3"
+    VERSION: str = "2.2.0"
 
     def __init__(self) -> None:
         """Class initializer for the REPL."""
@@ -137,7 +137,7 @@ class Repl:
         self.init()
         Repl.printBanner()
 
-        while True:
+        while self.running:
             current_indent_str: str = " " * (self.indent_level * Repl.INDENT_STEP)
             prompt: str = Repl.PRIMARY_PROMPT if (self.indent_level <= 0 and self.input_state == InputState.SINGLE_LINE) else Repl.SECONDARY_PROMPT
 
@@ -163,10 +163,7 @@ class Repl:
                     line: str = input(f"{prompt}{current_indent_str}").strip()
 
                 if not self.final_script and self.processInternalCommand(line):
-                    if not self.running:
-                        return
-                    else:
-                        continue
+                    continue
                 else:
                     if from_file:
                         code_obj: CodeType = compile(self.final_script, "<stdin>", "exec")
@@ -174,6 +171,11 @@ class Repl:
                         self.indent_level = max(0, self.indent_level - 1)
                     else:
                         self.final_script += current_indent_str + line + "\n"
+
+                        # Special handling for unfinished multiline brackets
+                        if line.endswith(('(', '[', '{')):
+                            raise IndentationError
+
                         code_obj: CodeType = compile(self.final_script, "<stdin>", "exec")
                 
                     if self.indent_level == 0 and self.final_script and self.input_state == InputState.MULTI_LINE:
@@ -187,9 +189,25 @@ class Repl:
 
                         self.final_script = ""
                         self.input_state = InputState.SINGLE_LINE
-            except IndentationError:
-                self.input_state = InputState.MULTI_LINE
-                self.indent_level += 1
+            except IndentationError as e:
+                # File input and explicit raise should not prompt for more input
+                if from_file or "raise IndentationError" in self.final_script:
+                    print(f"{Repl.ERROR_PROMPT}{Color.RED}{type(e).__name__}: {e}{Color.RESET}")
+                    self.input_state = InputState.SINGLE_LINE
+                    self.final_script = ""
+                    self.indent_level = 0
+                else:
+                    self.input_state = InputState.MULTI_LINE
+                    self.indent_level += 1
+            except SyntaxError as e:
+                # Check for incomplete brackets
+                if '(' in str(e) or '[' in str(e) or '{' in str(e):
+                    continue
+                else:
+                    print(f"{Repl.ERROR_PROMPT}{Color.RED}{type(e).__name__}: {e}{Color.RESET}")
+                    self.input_state = InputState.SINGLE_LINE
+                    self.final_script = ""
+                    self.indent_level = 0
             except Exception as e:
                 print(f"{Repl.ERROR_PROMPT}{Color.RED}{type(e).__name__}: {e}{Color.RESET}")
                 self.input_state = InputState.SINGLE_LINE
