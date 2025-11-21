@@ -1,0 +1,31 @@
+{
+    "application": {
+        "name": "PyREPL",
+        "author": "HeyheyEason",
+        "version": [
+            3,
+            0,
+            0
+        ]
+    },
+    "repl": {
+        "indent-step": 4,
+        "prompts": {
+            "primary": ">>> ",
+            "secondary": "... ",
+            "error": "!!! "
+        },
+        "use-colored-terminal-text": true
+    },
+    "file": {
+        "dir": {
+            "help": "data/assets/Help.txt",
+            "scripts-default": "data/scripts",
+            "scripts-custom": "",
+            "logs": "data/logs"
+        },
+        "use-default-scripts-dir": true
+    },
+    "user-contents": null,
+    "disable-config-editor": false
+}

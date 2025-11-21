@@ -1,0 +1,107 @@
+================================================================================
+PyREPL User Manual (v3.0.0)
+    - Description: PyREPL is a Read-Eval-Print Loop app implemented with least 
+                   Python dependencies. It supports multi-line input, 
+                   error handling, and internal commands.
+    - Operations: Type Python code directly and press Enter to execute.
+                  In this manual, press Enter to show the next line.
+--------------------------------------------------------------------------------
+Command Line Arguments
+    - Usage:
+        1. From source file: python main.py <args>
+        2. From executable: pyrepl.exe <args>
+    - Arguments:
+        --version (-v): Show the version information.
+        --credits (-c): Show the credits information.
+--------------------------------------------------------------------------------
+Internal Commands
+    - exit (quit): Exit the REPL.
+    - clear: Clear the terminal screen.
+    - dictionary: Print the current REPL dictionary.
+    - reset: Reset the REPL environment (except imported modules).
+    - write <filename>: Write the input code history to a Python source file.
+    - append <filename>: Append the input code history to a Python source file.
+    - read <filename>: Read and execute Python code from a source file.
+    - save: Save the current using Python source file.
+    - delete <filename>: Delete a specified source file.
+    - config: Enter the config editor to modify the configuration.
+    - help:
+        1. Usage: help "all"/<chapter>/<pyobject>
+        2. Chapter ID: "intro" -> PyREPL User Manual
+                       "cmdline-args" -> Command Line Arguments
+                       "internal-cmds" -> Internal Commands
+                       "coding" -> Coding
+                       "examples" -> Long Code Examples
+                       "note" -> Note
+--------------------------------------------------------------------------------
+Coding
+    - Basic:
+        1. Usage: Please type in valid Python code.
+        2. Example: print('Hello, world!')
+
+    - Prompts:
+        1. Primary Prompt (>>>): Indicates readiness for new input.
+        2. Secondary Prompt (...): Indicates continuation of a multi-line input.
+
+    - Indentation:
+        1. Indentation Management: PyREPL controls indentation automatically, 
+                                   please note that you cannot use Tab key to 
+                                   indent your code, not use Backspace key to 
+                                   unindent your code by yourself.
+        2. About Code Blocks:
+            a. When you type a line which starts a code block, PyREPL will 
+               increase the indentation level for the next line.
+            b. When you finish a code block, you can press Enter on an empty 
+               line to decrease the indentation level.
+            c. If you want to write continuous structures when the indentation 
+               level is 0, you can just type the next line directly. Else, 
+               press Enter to exit multi-line input mode.
+
+    - Error Handling: If an error occurs during code execution, PyREPL wlll 
+                      display an error message and reset the input state.
+                      Please note that system-level exceptions will terminate 
+                      the REPL.
+--------------------------------------------------------------------------------
+Long Code Examples
+    - Example 1: Function Definition
+        >>> def greet(name):
+        ...     print(f'Hello, {name}!')
+        ...     
+        ... 
+        >>> greet('Alice')
+        Hello, Alice!
+
+    - Example 2: Top-level Control Flow
+        >>> import os
+        >>> if os.name == 'nt':
+        ...     print('Running on Windows')
+        ...     
+        ... else:
+        ...     print('Running on Unix-like OS')
+        ...     
+        ...
+        (The result will vary based on the operating system.)
+
+   - Example 3: Class Definition
+        >>> class Person:
+        ...     def __init__(self, name, age):
+        ...         self.name = name
+        ...         self.age = age
+        ...         print(f'Person {name} created.')
+        ...         
+        ...     def introduce(self):
+        ...         print(f'Name: {self.name}')
+        ...         print(f'Age: {self.age}')
+        ...         
+        ...     
+        ...
+        >>> p = Person('Bob', 30)
+        Person Bob created.
+        >>> p.introduce()
+        Name: Bob
+        Age: 30
+--------------------------------------------------------------------------------
+Note
+    - For more information, please refer to PyREPL's GitHub respository.
+    - For Python help utility, please enter 'help <pyobject>' in the REPL.
+================================================================================

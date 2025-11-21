@@ -5,33 +5,48 @@ File Information
     - Project: HeyheyEason PyREPL
     - Module: core.file_io
     - Description: Script for file I/O operations in the REPL.
-    - Last Modified: 2025-11-12
+    - Last Modified: 2025-11-22
 ==============================================================
 """
 
 import sys
 import webbrowser
+from typing import ClassVar, Optional
 from pathlib import Path
 from io import TextIOWrapper
 from utilities import FileOperation, Color
+from system import Config
 
 class FileIO:
     """Class representing file input/output system for the REPL."""
     
     # Define base directory paths
-    PROJECT_DIR: Path = Path(sys.executable).resolve().parent.parent.parent if getattr(sys, 'frozen', False) else Path(__file__).resolve().parent.parent.parent
-    HELP_DIR: Path = PROJECT_DIR / "data" / "documents" / "Help.txt"
-    SCRIPTS_DIR: Path = PROJECT_DIR / "data" / "scripts"
+    HELP_DIR: ClassVar[Path] = None
+    SCRIPTS_DIR: ClassVar[Path] = None
+    LOGS_DIR: ClassVar[Path] = None
 
-    PYTHON_VERSION_INFO: str = f"{sys.version_info.major}.{sys.version_info.minor}"
-    PYTHON_DOCS_URL: str = f"https://docs.python.org/{PYTHON_VERSION_INFO}/"
+    PYTHON_VERSION_INFO: ClassVar[str] = f"{sys.version_info.major}.{sys.version_info.minor}"
+    PYTHON_DOCS_URL: ClassVar[str] = f"https://docs.python.org/{PYTHON_VERSION_INFO}/"
 
     def __init__(self) -> None:
         """Class initailizer for FileIO."""
-        self.script_file: TextIOWrapper = None
+        self.script_file: Optional[TextIOWrapper] = None
         self.file_operation: FileOperation = FileOperation.IDLING
 
-    def getHelp(self, keyword: str) -> None:
+    @classmethod
+    def setConstants(cls, file_config: dict) -> None:
+        dir_config: dict = file_config.get('dir', {})
+
+        cls.HELP_DIR = Config.PROJECT_DIR / dir_config.get('help', "data/assets/Help.txt")
+        cls.LOGS_DIR = Config.PROJECT_DIR / dir_config.get('logs', "data/logs")
+
+        if file_config.get('use-default-scripts-dir', True):
+            cls.SCRIPTS_DIR = Config.PROJECT_DIR / dir_config.get('scripts-default', "data/scripts")
+        else:
+            cls.SCRIPTS_DIR = Config.PROJECT_DIR / dir_config.get('scripts-custom', "")
+
+    @classmethod
+    def getHelp(cls, keyword: str) -> None:
         """Print help information."""
         keyword = keyword.replace('"', '').replace('\'', '')
         chapter: dict[str, str] = {
@@ -45,20 +60,20 @@ class FileIO:
         }
 
         if keyword not in chapter:
-            url: str = f"{FileIO.PYTHON_DOCS_URL}search.html?q={keyword}"
+            url: str = f"{cls.PYTHON_DOCS_URL}search.html?q={keyword}"
 
             try:
                 webbrowser.open_new_tab(url)
-                print(f"{Color.CYAN}Opening web browser for Python documentation on '{keyword}'...{Color.RESET}")
+                print(f"{Color.CYAN}Opening web browser for Python documentation on '{keyword}'...{Color.RESET}\n")
             except webbrowser.Error as e:
-                print(f"{Color.RED}PyREPL Error: Failed to open web browser. {e}{Color.RESET}")
+                print(f"{Color.RED}PyREPL Error: Failed to open web browser. {e}{Color.RESET}\n")
             
             return
 
         chapter_name: str = chapter[keyword]
 
         try:
-            with open(FileIO.HELP_DIR, "r", encoding="utf-8") as help_file:
+            with open(cls.HELP_DIR, "r", encoding="utf-8") as help_file:
                 if chapter_name == "all":
                     help_text: list[str] = help_file.read().splitlines()
                 else:
@@ -87,12 +102,12 @@ class FileIO:
 
             input(f"{Color.CYAN}Press Enter to continue...{Color.RESET}")
         except FileNotFoundError:
-            print(f"{Color.RED}PyREPL Error: Help file not found.{Color.RESET}")
+            print(f"{Color.RED}PyREPL Error: Help file not found.{Color.RESET}\n")
 
     def openFile(self, op: str, file_name: str) -> bool:
         """Initialize the script file."""
         if self.file_operation != FileOperation.IDLING:
-            print(f"{Color.RED}PyREPL Error: A file is already open. Please close it before opening another file.{Color.RESET}")
+            print(f"{Color.RED}PyREPL Error: A file is already open. Please close it before opening another file.{Color.RESET}\n")
             return False
 
         script_path: Path = FileIO.SCRIPTS_DIR / file_name
@@ -113,17 +128,17 @@ class FileIO:
             if script_path.exists():
                 self.script_file = open(script_path, "r", encoding="utf-8")
             else:
-                print(f"{Color.RED}PyREPL Error: File '{script_path}' not found.{Color.RESET}")
+                print(f"{Color.RED}PyREPL Error: File '{script_path}' not found.{Color.RESET}\n")
                 self.file_operation = FileOperation.IDLING
                 return False
         elif self.file_operation == FileOperation.DELETE:
             if script_path.exists():
                 script_path.unlink()
                 self.file_operation = FileOperation.IDLING
-                print(f"{Color.CYAN}File '{script_path}' deleted successfully.{Color.RESET}")
+                print(f"{Color.CYAN}File '{script_path}' deleted successfully.{Color.RESET}\n")
             else:
                 self.file_operation = FileOperation.IDLING
-                print(f"{Color.RED}File '{script_path}' not found.{Color.RESET}")
+                print(f"{Color.RED}File '{script_path}' not found.{Color.RESET}\n")
                 return False
 
         return True

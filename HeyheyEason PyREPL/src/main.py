@@ -1,32 +1,37 @@
 ﻿"""
-==================================================================================================
+==================================================================================================================
 File Information
     - Filename: main.py
     - Project: HeyheyEason PyREPL
     - Module: __main__
     - Author: HeyheyEason
     - License: MIT License
-    - Description: The main entry point for the PyREPL app.
-    - Version: 2.2.0
-    - Last Modified: 2025-11-15
---------------------------------------------------------------------------------------------------
+    - Description: The main entry point for PyREPL.
+    - Version: 3.0.0
+    - Last Modified: 2025-11-22
+------------------------------------------------------------------------------------------------------------------
 Environment Information
     - Python Version: 3.13.8
     - OS: Cross-platform (Windows, macOS, Linux)
     - Terminal: ANSI-compatible terminal recommended
---------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
 Changelog
-    - 2.2.0:
+    - 3.0.0:
         1. Submitter: Eason Huang
-        2. Changes:
-            a. The REPL now supports multi-line bracketed code blocks.
-            b. Explict raise of IndentationError won't cause accidental indentation increament.
-            c. SyntaxError now skips the situation when the user inputs incomplete bracketed code.
-==================================================================================================
+        2. Contents:
+            a. The config editor is now availavle, controlling configuration of the app.
+            b. The prompts can now be modified in config.json.
+            c. Improved the compatibility with older terminals through providing an option to disable color texts.
+            d. Ctrl+C is used to cancel the input now, not terminate the REPL.
+            e. The out on the screen will now be separated with a empty line.
+            f. Fix a bug that cause improper position of the prompt when user's 'print()' ends with non-\n chars.
+==================================================================================================================
 """
 
 import sys
 from core import Repl
+from utilities import Color
+from system import ReplError
 
 def main(argv: list[str]) -> int:
     """The entry point for PyREPL."""
@@ -42,12 +47,12 @@ def main(argv: list[str]) -> int:
             repl.run()
             repl.file_io.closeFile()
             return 0
-        except KeyboardInterrupt:
-            repl.file_io.closeFile()
-            return 1
+        except ReplError as e:
+            print(f"{Color.RED}{e}{Color.RESET}")
+            return e.error_code
         except BaseException:
             repl.handleTermination()
-            return 2
+            return 4
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv))

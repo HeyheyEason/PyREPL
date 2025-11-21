@@ -1,6 +1,6 @@
 # HeyheyEason PyREPL
 
-[![Version](https://img.shields.io/badge/Version-2.2.0-blue.svg)](https://github.com/HeyheyEason/PyREPL/)
+[![Version](https://img.shields.io/badge/Version-3.0.0-blue.svg)](https://github.com/HeyheyEason/PyREPL/)
 [![Python](https://img.shields.io/badge/Python-3.13+-informational.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.txt)
 
@@ -69,10 +69,10 @@ The following table details the Python versions corresponding to the various sup
 
 | PyREPL Executable Version | Corresponding Python Version |
 | :------------------------ | :--------------------------- |
-| 1.5.2                     | 3.13.2                       |
 | 2.0.4                     | 3.13.8                       |
 | 2.1.3                     | 3.13.8                       |
 | 2.2.0                     | 3.13.8                       |
+| 3.0.0                     | 3.13.9                       |
 
 ---
 

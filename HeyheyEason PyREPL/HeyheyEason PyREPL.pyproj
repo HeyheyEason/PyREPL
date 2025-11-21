@@ -28,6 +28,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\main.py" />
+    <Compile Include="src\system\config.py" />
+    <Compile Include="src\system\repl_error.py" />
+    <Compile Include="src\system\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="src\utilities\color.py" />
     <Compile Include="src\utilities\file_operation.py" />
     <Compile Include="src\utilities\input_state.py" />
@@ -43,6 +48,7 @@
     <Folder Include="backups\" />
     <Folder Include="src\" />
     <Folder Include="src\core\" />
+    <Folder Include="src\system\" />
     <Folder Include="src\utilities\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
