@@ -22,6 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="preprocessing\version.py" />
     <Compile Include="src\core\file_io.py" />
     <Compile Include="src\core\repl.py" />
     <Compile Include="src\core\__init__.py">
@@ -46,6 +47,7 @@
     <Folder Include="dist\" />
     <Folder Include="dist\windows\" />
     <Folder Include="backups\" />
+    <Folder Include="preprocessing\" />
     <Folder Include="src\" />
     <Folder Include="src\core\" />
     <Folder Include="src\system\" />
