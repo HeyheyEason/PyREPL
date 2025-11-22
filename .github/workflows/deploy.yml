@@ -55,7 +55,6 @@ jobs:
         uses: actions/configure-pages@v4
         with:
           enablement: true 
-          source_branch: 'master'
           
       # 5. Upload to Artifact
       - name: Upload Pages deployment pack
