@@ -11,7 +11,7 @@ File Information
     - Last Modified: 2025-11-22
 ------------------------------------------------------------------------------------------------------------------
 Environment Information
-    - Python Version: 3.13.8
+    - Python Version: 3.13.9
     - OS: Cross-platform (Windows, macOS, Linux)
     - Terminal: ANSI-compatible terminal recommended
 ------------------------------------------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ Changelog
             b. The prompts can now be modified in config.json.
             c. Improved the compatibility with older terminals through providing an option to disable color texts.
             d. Ctrl+C is used to cancel the input now, not terminate the REPL.
-            e. The out on the screen will now be separated with a empty line.
+            e. The output on the screen will now be separated with a empty line.
             f. Fix a bug that cause improper position of the prompt when user's 'print()' ends with non-\n chars.
 ==================================================================================================================
 """
