@@ -29,6 +29,7 @@ jobs:
       # 1. Create and prepare resources for deployment
       - name: Create and prepare resources for deployment
         run: |
+          rm -rf pages_assets
           mkdir pages_assets
           VERSION=${{ github.ref_name }} # e.g., v3.0.0
           
@@ -50,7 +51,7 @@ jobs:
           fi
           
           # Create version.json (use VERSION_ARRAY variable)
-          echo "{\"latest_version\": $VERSION_ARRAY, \"download_url\": \"${PAGES_URL_ROOT}${DOWNLOAD_FILE}\", \"notes\": \"Windows Installer Pack\"}" > pages_assets/version.json
+          echo "{\"latest-version\": $VERSION_ARRAY, \"download-url\": \"${PAGES_URL_ROOT}${DOWNLOAD_FILE}\", \"notes\": \"Windows Installer Pack\"}" > pages_assets/version.json
           
           # Clone License.txt
           cp "LICENSE.txt" pages_assets/
