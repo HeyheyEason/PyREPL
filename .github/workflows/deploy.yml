@@ -38,7 +38,8 @@ jobs:
           VERSION_ARRAY=$(echo "$VERSION_NUM" | tr '.' ',' | sed 's/\(.*\)/[\1]/')
           
           PAGES_URL_ROOT="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
-          DOWNLOAD_FILE="pyrepl_${VERSION}-win.zip"
+          ZIP_FILE="pyrepl_${VERSION}-win.zip"
+          ICO_FILE="pyrepl.ico"
 
           # Define executable directory
           EXE_NAME="pyrepl_${VERSION}.exe"
@@ -51,10 +52,13 @@ jobs:
           fi
           
           # Create version.json (use VERSION_ARRAY variable)
-          echo "{\"latest-version\": $VERSION_ARRAY, \"download-url\": \"${PAGES_URL_ROOT}${DOWNLOAD_FILE}\", \"notes\": \"Windows Installer Pack\"}" > pages_assets/version.json
+          echo "{\"latest-version\": $VERSION_ARRAY, \"zip-url\": \"${PAGES_URL_ROOT}${ZIP_FILE}\", \"ico-url\": \"${PAGES_URL_ROOT}${ICO_FILE}\", \"note\": \"Windows Installer Pack\"}" > pages_assets/version.json
           
-          # Clone License.txt
+          # Clone LICENSE.txt
           cp "LICENSE.txt" pages_assets/
+
+          # Clone pyrepl.ico
+          cp "HeyheyEason PyREPL/rc/pyrepl.ico" pages_assets/
           
           # 3. Create pyrepl_vx.y.z.zip
           zip -r pages_assets/${DOWNLOAD_FILE} \
