@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft-07/schema#",
-    "$id": "https://raw.githubusercontent.com/HeyheyEason/PyREPL/refs/heads/master/HeyheyEason%20PyREPL/data/assets/config.schema.json",
+    "$id": "https://raw.githubusercontent.com/HeyheyEason/PyREPL/master/HeyheyEason%20PyREPL/data/assets/config.schema.json",
     "title": "HeyheyEason PyREPL Configuration Schema",
     "type": "object",
     "additionalProperties": false,
@@ -72,7 +72,7 @@
                         }
                     }
                 },
-                "use-color-terminal-text": {
+                "use-colored-terminal-text": {
                     "type": "boolean",
                     "description": "Whether the user use colored text in the terminal",
                     "default": true,

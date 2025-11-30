@@ -1,4 +1,5 @@
 {
+	"$schema": "https://raw.githubusercontent.com/HeyheyEason/PyREPL/master/HeyheyEason%20PyREPL/data/assets/config.schema.json",
     "application": {
         "name": "PyREPL",
         "author": "HeyheyEason",
