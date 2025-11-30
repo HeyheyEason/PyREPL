@@ -61,7 +61,7 @@ jobs:
           cp "HeyheyEason PyREPL/rc/pyrepl.ico" pages_assets/
           
           # 3. Create pyrepl_vx.y.z.zip
-          zip -r pages_assets/${DOWNLOAD_FILE} \
+          zip -r pages_assets/${ZIP_FILE} \
             "HeyheyEason PyREPL/data" \
             "$EXE_PATH"
           
