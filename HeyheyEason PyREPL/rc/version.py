@@ -21,20 +21,21 @@ VSVersionInfo(
     kids=[
         StringFileInfo(
             [
-            StringTable(
-                u'040904b0', # English US with Unicode
-                [
-                    StringStruct(u'CompanyName', u'HeyheyEason'),
-                    StringStruct(u'FileDescription', u'A lightweight Python REPL app.'),
-                    StringStruct(u'FileVersion', u'1.0.0'), 
-                    StringStruct(u'InternalName', u'MyAppInternalName'),
-                    StringStruct(u'LegalCopyright', u'Copyright © 2025 HeyheyEason'),
-                    StringStruct(u'OriginalFilename', u'pyrepl_v3.0.0.exe'),
-                    StringStruct(u'ProductName', u'HeyheyEason PyREPL'),
-                    StringStruct(u'ProductVersion', u'3.0.0'),
-                ]
-            )
-            ]), 
+                StringTable(
+                    u'040904b0', # English US with Unicode
+                    [
+                        StringStruct(u'CompanyName', u'HeyheyEason'),
+                        StringStruct(u'FileDescription', u'A lightweight Python REPL app.'),
+                        StringStruct(u'FileVersion', u'1.0.0'), 
+                        StringStruct(u'InternalName', u'HeyheyEason.PyREPL'),
+                        StringStruct(u'LegalCopyright', u'Copyright © 2025 HeyheyEason'),
+                        StringStruct(u'OriginalFilename', u'pyrepl_v3.0.0.exe'),
+                        StringStruct(u'ProductName', u'HeyheyEason PyREPL'),
+                        StringStruct(u'ProductVersion', u'3.0.0'),
+                    ]
+                )
+            ]
+        ), 
         
         VarFileInfo(
             [

@@ -8,8 +8,9 @@ HeyheyEason\ PyREPL/build/
 HeyheyEason\ PyREPL/*.spec
 HeyheyEason\ PyREPL/backups/
 
-# PyREPL Installer folder
+# PyREPL Installer/Uninstaller folder
 PyREPL\ Installer/
+PyREPL\ Uninstaller/
 
 # User-specific files
 *.rsuser
