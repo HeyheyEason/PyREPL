@@ -6,7 +6,7 @@
 # PyInstaller, build, and temporary files
 HeyheyEason\ PyREPL/build/
 HeyheyEason\ PyREPL/*.spec
-HeyheyEason\ PyREPL/backups/
+HeyheyEason\ PyREPL/temp/
 
 # PyREPL Installer/Uninstaller folder
 PyREPL\ Installer/

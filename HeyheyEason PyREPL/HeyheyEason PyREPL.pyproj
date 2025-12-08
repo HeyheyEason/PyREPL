@@ -46,12 +46,16 @@
     <Folder Include="data\" />
     <Folder Include="dist\" />
     <Folder Include="dist\windows\" />
-    <Folder Include="backups\" />
+    <Folder Include="temp\" />
+    <Folder Include="docs\" />
     <Folder Include="rc\" />
     <Folder Include="src\" />
     <Folder Include="src\core\" />
     <Folder Include="src\system\" />
     <Folder Include="src\utilities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="docs\.gitkeep" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

@@ -27,7 +27,7 @@ VSVersionInfo(
                         StringStruct(u'CompanyName', u'HeyheyEason'),
                         StringStruct(u'FileDescription', u'A lightweight Python REPL app.'),
                         StringStruct(u'FileVersion', u'1.0.0'), 
-                        StringStruct(u'InternalName', u'HeyheyEason.PyREPL'),
+                        StringStruct(u'InternalName', u'HeyheyEason.PyREPL.App'),
                         StringStruct(u'LegalCopyright', u'Copyright © 2025 HeyheyEason'),
                         StringStruct(u'OriginalFilename', u'pyrepl_v3.0.0.exe'),
                         StringStruct(u'ProductName', u'HeyheyEason PyREPL'),
