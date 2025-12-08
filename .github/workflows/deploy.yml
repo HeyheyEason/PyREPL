@@ -1,4 +1,4 @@
-﻿name: Deploy Application Assets to GitHub Pages
+name: Deploy Application Assets to GitHub Pages
 
 on:
   release:
@@ -62,6 +62,8 @@ jobs:
           
           # 3. Create pyrepl_vx.y.z.zip
           zip -r pages_assets/${ZIP_FILE} \
+            "installer.exe" \
+            "uninstaller.exe" \
             "HeyheyEason PyREPL/data" \
             "$EXE_PATH"
           

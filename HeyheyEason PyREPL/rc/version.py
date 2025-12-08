@@ -1,4 +1,4 @@
-﻿# PyREPL version info
+# PyREPL version info
 # version.py
 # type: ignore
 
