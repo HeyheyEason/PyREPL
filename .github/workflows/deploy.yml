@@ -1,0 +1,85 @@
+name: Deploy Application Assets to GitHub Pages
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write    
+      pages: write       
+      id-token: write    
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: Check master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master 
+          
+      # Install zip tool
+      - name: Install zip tool
+        run: sudo apt-get install zip -y
+        
+      # 1. Create and prepare resources for deployment
+      - name: Create and prepare resources for deployment
+        run: |
+          rm -rf pages_assets
+          mkdir pages_assets
+          VERSION=${{ github.ref_name }} # e.g., v3.0.0
+          
+          # 2. Convert version string into JSON array [x, y, z]
+          VERSION_NUM=$(echo "$VERSION" | sed 's/^v//')
+          VERSION_ARRAY=$(echo "$VERSION_NUM" | tr '.' ',' | sed 's/\(.*\)/[\1]/')
+          
+          PAGES_URL_ROOT="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          ZIP_FILE="pyrepl_${VERSION}-win.zip"
+          ICO_FILE="pyrepl.ico"
+
+          # Define executable directory
+          EXE_NAME="pyrepl_${VERSION}.exe"
+          EXE_PATH="HeyheyEason PyREPL/dist/windows/$EXE_NAME"
+          
+          # Check executable existence
+          if [ ! -f "$EXE_PATH" ]; then
+            echo "::error file=$EXE_PATH::Assigned executable not found. Please make sure that $EXE_PATH exists in master branch."
+            exit 1
+          fi
+          
+          # Create version.json (use VERSION_ARRAY variable)
+          echo "{\"latest-version\": $VERSION_ARRAY, \"zip-url\": \"${PAGES_URL_ROOT}${ZIP_FILE}\", \"ico-url\": \"${PAGES_URL_ROOT}${ICO_FILE}\", \"note\": \"Windows Installer Pack\"}" > pages_assets/version.json
+          
+          # Clone LICENSE.txt
+          cp "LICENSE.txt" pages_assets/
+
+          # Clone pyrepl.ico
+          cp "HeyheyEason PyREPL/rc/pyrepl.ico" pages_assets/
+          
+          # 3. Create pyrepl_vx.y.z.zip
+          zip -r pages_assets/${ZIP_FILE} \
+            "installer.exe" \
+            "uninstaller.exe" \
+            "HeyheyEason PyREPL/data" \
+            "$EXE_PATH"
+          
+      # 4. Set and activate Pages 
+      - name: Set and activate GitHub Pages
+        uses: actions/configure-pages@v4
+        with:
+          enablement: true 
+          
+      # 5. Upload to Artifact
+      - name: Upload Pages deployment pack
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'pages_assets'
+          
+      # 6. Deploy to Pages 
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

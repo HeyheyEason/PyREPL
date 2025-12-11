@@ -1,0 +1,141 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$id": "https://raw.githubusercontent.com/HeyheyEason/PyREPL/master/HeyheyEason%20PyREPL/data/assets/config.schema.json",
+    "title": "HeyheyEason PyREPL Configuration Schema",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "application": {
+            "type": "object",
+            "description": "General application settings",
+            "additionalProperties": false,
+            "readOnly": true,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the application",
+                    "default": "PyREPL",
+                    "readOnly": true
+                },
+                "author": {
+                    "type": "string",
+                    "description": "The author of the application",
+                    "default": "HeyheyEason",
+                    "readOnly": true
+                },
+                "version": {
+                    "type": "array",
+                    "description": "The version of the application as [major, minor, patch]",
+                    "additionalItems": false,
+                    "readOnly": true,
+                    "items": {
+                        "type": "integer",
+                        "default": 1,
+                        "minimum": 0,
+                        "readOnly": true
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                }
+            }
+        },
+        "repl": {
+            "type": "object",
+            "description": "The REPL settings",
+            "additionalProperties": false,
+            "properties": {
+                "indent-step": {
+                    "type": "integer",
+                    "description": "Number of spaces in an indentation",
+                    "default": 4,
+                    "minimum": 1
+                },
+                "prompts": {
+                    "type": "object",
+                    "description": "The REPL prompts settings",
+                    "additionalProperties": false,
+                    "properties": {
+                        "primary": {
+                            "type": "string",
+                            "description": "The prompt when the user is in single line input state",
+                            "default": ">>> "
+                        },
+                        "secondary": {
+                            "type": "string",
+                            "description": "The prompt when the user is in multi-line input state",
+                            "default": "... "
+                        },
+                        "error": {
+                            "type": "string",
+                            "description": "The prompt when the user get an error message",
+                            "default": "!!! "
+                        }
+                    }
+                },
+                "use-colored-terminal-text": {
+                    "type": "boolean",
+                    "description": "Whether the user use colored text in the terminal",
+                    "default": true,
+                    "$comment": "ANSI Escape Code required"
+                }
+            }
+        },
+        "file": {
+            "type": "object",
+            "description": "The file I/O system settings",
+            "additionalProperties": false,
+            "properties": {
+                "dir": {
+                    "type": "object",
+                    "description": "Directories settings for different paths",
+                    "additionalProperties": false,
+                    "properties": {
+                        "help": {
+                            "type": "string",
+                            "description": "The directory path for Help.txt file",
+                            "default": "data/assets/Help.txt",
+                            "$comment": "Relative to the project root directory"
+                        },
+                        "scripts-default": {
+                            "type": "string",
+                            "description": "The default directory path for scripts",
+                            "default": "data/scripts",
+                            "$comment": "Relative to the project root directory"
+                        },
+                        "scripts-custom": {
+                            "type": "string",
+                            "description": "The custom directory path for scripts if the user needs",
+                            "default": "",
+                            "$comment": "Absolute path required, empty string means not set"
+                        },
+                        "logs": {
+                            "type": "string",
+                            "description": "The directiory path for logs",
+                            "default": "data/logs",
+                            "$comment": "Relative to the project root directory"
+                        }
+                    }
+                },
+                "use-default-scripts-dir": {
+                    "type": "boolean",
+                    "description": "Whether the user uses default scripts directory",
+                    "default": true,
+                    "$comment": "If dir.scripts-custom is empty, the default directory will be used anyway"
+                }
+            }
+        },
+        "user-contents": {
+            "type": [ "object", "null" ],
+            "description": "A block allowed the user to place their own settings",
+            "default": null,
+            "$comment": "If defined, the user can place anything here, else this function is disabled"
+        },
+        "disable-config-editor": {
+            "type": "boolean",
+            "description": "Whether the built-in config editor is disabled",
+            "default": false,
+            "$comment": "This option will be true if the build is a pre-release"
+        }
+    },
+    "required": [ "application", "repl", "file", "disable-config-editor" ]
+}
